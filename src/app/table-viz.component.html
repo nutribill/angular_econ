@@ -1,0 +1,15 @@
+<table class="table">
+  <tr>
+    <th>Year</th>
+    <th *ngFor="let year of years">{{year|yearAbbrev}}</th>
+  </tr>
+
+  <tr *ngFor="let countryData of countryDataList()" [style.color]="countryData.colorCode">
+    <td>{{countryData.country}}</td>
+
+    <td *ngFor="let yearValue of countryData.yearsValues">
+      {{yearValue | number:'1.1-1'}}
+    </td>
+  </tr>
+
+</table>

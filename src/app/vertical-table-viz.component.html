@@ -1,0 +1,18 @@
+<table class="table">
+  <tr>
+    <th>Country</th>
+    <th *ngFor="let country of countries"
+        [style.color]="graphData.countryDataMap.get(country).colorCode">
+      {{country}}</th>
+  </tr>
+
+  <tr *ngFor="let yearData of yearDataList()" >
+    <td>{{yearData.year}}</td>
+
+    <td *ngFor="let countryValue of yearData.countriesValues; let idx = index"
+        [style.color]="yearData.colorCodes[idx]">
+      {{countryValue | number:'1.1-1'}}
+    </td>
+  </tr>
+
+</table>

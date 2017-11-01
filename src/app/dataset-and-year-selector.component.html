@@ -1,0 +1,18 @@
+<div style="margin:10px">
+<select [(ngModel)]="selectedDataset" (change)="updateDataset()">
+  <option *ngFor="let datasetInfo of datasets"
+          [ngValue]="datasetInfo.dataset"
+          [selected]="datasetInfo.dataset == selectedDataset">
+    {{datasetInfo.datasetLabel}}
+  </option>
+</select>
+
+from
+<select [(ngModel)]="startYear" (change)="updateYears()">
+  <option *ngFor="let year of startYearsRange">{{year}}</option>
+</select>
+to
+<select [(ngModel)]="endYear" (change)="updateYears()">
+  <option *ngFor="let year of endYearsRange">{{year}}</option>
+</select>
+</div>

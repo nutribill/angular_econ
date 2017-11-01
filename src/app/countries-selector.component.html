@@ -1,0 +1,23 @@
+<div>
+  <div *ngIf="!colorMapEmpty()" id="countries-legend" style="border:2px solid red">
+    <h4 style="margin:8px">Countries Legend:</h4>
+    <div *ngFor="let cl of countryColorPairs()" [style.color]="cl[1]" style="margin:8px">
+      {{cl[0]}}
+        <span class="glyphicon glyphicon-trash" (mousedown)="deleteCountry(cl[0])"></span>
+    </div>
+  </div>
+  <div *ngIf="colorMapEmpty()">
+    No countries are selected yet.
+  </div>
+
+  <div *ngIf="colorsAllTaken()">
+    Maximum number of countries selected.
+  </div>
+  <div *ngIf="!colorsAllTaken()">
+    <ng2-completer
+      placeholder="Type and select country name"
+      [datasource]="unusedCountries()" (selected)="onCountrySelect($event)"
+      [selectOnClick]="true" [clearSelected]="true">
+    </ng2-completer>
+  </div>
+</div>
